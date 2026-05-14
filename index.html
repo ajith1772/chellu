@@ -28,11 +28,15 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
-        /* ================= NEW DELIVERY NOTE UI ================= */
-        .delivery-card { width: auto; background: var(--card-bg); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); margin-bottom: 30px; border: 1px solid var(--border); }
-        .delivery-img-wrapper { position: relative; width: auto; height: 320px; background: #000; }
-        .delivery-img-wrapper img { width:auto; height: 100%; object-fit: cover; opacity: 0.9; }
-        .delivery-badge { position: absolute; top: 15px; right: 15px; background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 8px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 900; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4); display: flex; align-items: center; gap: 5px; }
+        /* ================= NEW DELIVERY NOTE UI WITH 2 IMAGES ================= */
+        .delivery-card { width: 100%; background: var(--card-bg); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); margin-bottom: 30px; border: 1px solid var(--border); }
+        
+        .delivery-img-wrapper { position: relative; width: auto; height: auto; background: #000; display: flex; }
+        .delivery-img-wrapper img { flex: 1; width: 50%; height: 100%; object-fit: cover; opacity: 0.9; }
+        /* Add a nice border between the two images */
+        .delivery-img-wrapper img:first-child { border-right: 3px solid #1e3c72; } 
+        
+        .delivery-badge { position: absolute; top: 15px; leftt: 15px; background: linear-gradient(135deg, #27ae60, #2ecc71); color: white; padding: 8px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 900; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4); display: flex; align-items: center; gap: 5px; z-index: 10;}
         .delivery-badge::before { content: "✔"; font-size: 1rem; }
         .delivery-info { padding: 20px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; }
         .del-top { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 12px; margin-bottom: 12px; }
@@ -44,13 +48,7 @@
         .del-date { font-family: monospace; font-size: 1.05rem; font-weight: bold; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 
         /* Existing Styles */
-        .box-heading {
-            text-transform: uppercase; font-size: 1.4rem; font-weight: 900;
-            color: var(--box-accent); background: linear-gradient(to right, #f8f9fa, #e9ecef);
-            border: 2px solid var(--box-accent); border-left: 10px solid var(--secondary);
-            padding: 15px 20px; border-radius: 8px; text-align: center; margin: 0 auto 25px auto;
-            letter-spacing: 2px; box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        }
+        .box-heading { text-transform: uppercase; font-size: 1.4rem; font-weight: 900; color: var(--box-accent); background: linear-gradient(to right, #f8f9fa, #e9ecef); border: 2px solid var(--box-accent); border-left: 10px solid var(--secondary); padding: 15px 20px; border-radius: 8px; text-align: center; margin: 0 auto 25px auto; letter-spacing: 2px; box-shadow: 0 5px 10px rgba(0,0,0,0.1); }
         .box-heading.service { border-color: var(--service-accent); border-left-color: var(--service-accent); color: var(--service-accent); }
 
         .form-group { margin-bottom: 20px; }
@@ -119,15 +117,20 @@
             
             <div id="chargeErrorBox" class="error-msg"></div>
 
-            <!-- DELIVERY NOTE UI (ABOVE HEADERS) -->
+            <!-- DELIVERY NOTE UI (WITH 2 IMAGES) -->
             <div class="delivery-card">
                 <div class="delivery-img-wrapper">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUPrBinRICH8Ls-edKvFvIZLmWz3B_FecgKs7sXZJmF9x1HfwxuaKjjq5IAIch66QJEW1qahJ7v0hAwBCe_9G5TQmGD-TIv5mj5VbDV36c3S2qjpqJTYPAwEozOXFvzyZfIpAO3ulWe19BR2-Gi8n-BFb_1uRjK7JtGe7OZWqCCgwz2pTC3yjB41QOHjke/s320/LIBERTY+.jpeg" alt="LIBERTY+">
+                    <!-- IMAGE 1 -->
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUPrBinRICH8Ls-edKvFvIZLmWz3B_FecgKs7sXZJmF9x1HfwxuaKjjq5IAIch66QJEW1qahJ7v0hAwBCe_9G5TQmGD-TIv5mj5VbDV36c3S2qjpqJTYPAwEozOXFvzyZfIpAO3ulWe19BR2-Gi8n-BFb_1uRjK7JtGe7OZWqCCgwz2pTC3yjB41QOHjke/s320/LIBERTY+.jpeg" alt="LIBERTY+ Left">
+                    
+                    <!-- IMAGE 2 (REPLACE THE URL BELOW WITH YOUR NEW IMAGE LINK) -->
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0ZAIXXV0O8O7cRuWC95Mf5ksQRQ8y6-CZYh2xdesyF4en1wTha8mwmd04HYM0H7B38uZdNq-HdoUw7nk6LJc0KEwBMRPxUH2iu2AHx4rmXSgtHr5MluCFKvJcNVLWPJ9jjlaOh3MNpHO4l9DAK7Y8uxMVkwur7ZJCFYk86kwjXTtjYcmHR4aeNKovszQR/s854/123.jpeg" alt="LIBERTY+ Right">
+                    
                     <div class="delivery-badge">DELIVERED</div>
                 </div>
                 <div class="delivery-info">
                     <div class="del-top">
-                        <div class="del-title">CHELLU'S USTROM LIBERTY PLUS</div>
+                        <div class="del-title">USTROM LIBERTY PLUS</div>
                         <div class="del-odo">25 <span>KM</span></div>
                     </div>
                     <div class="del-bottom">
@@ -201,15 +204,20 @@
             <div id="serviceErrorBox" class="error-msg"></div>
             <div id="serviceSuccessBox" class="success-msg">Service Log Saved Successfully!</div>
 
-            <!-- SAME DELIVERY NOTE UI FOR SERVICE TAB -->
+            <!-- SAME DELIVERY NOTE UI FOR SERVICE TAB (WITH 2 IMAGES) -->
             <div class="delivery-card">
                 <div class="delivery-img-wrapper">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUPrBinRICH8Ls-edKvFvIZLmWz3B_FecgKs7sXZJmF9x1HfwxuaKjjq5IAIch66QJEW1qahJ7v0hAwBCe_9G5TQmGD-TIv5mj5VbDV36c3S2qjpqJTYPAwEozOXFvzyZfIpAO3ulWe19BR2-Gi8n-BFb_1uRjK7JtGe7OZWqCCgwz2pTC3yjB41QOHjke/s320/LIBERTY+.jpeg" alt="LIBERTY+">
+                    <!-- IMAGE 1 -->
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUPrBinRICH8Ls-edKvFvIZLmWz3B_FecgKs7sXZJmF9x1HfwxuaKjjq5IAIch66QJEW1qahJ7v0hAwBCe_9G5TQmGD-TIv5mj5VbDV36c3S2qjpqJTYPAwEozOXFvzyZfIpAO3ulWe19BR2-Gi8n-BFb_1uRjK7JtGe7OZWqCCgwz2pTC3yjB41QOHjke/s320/LIBERTY+.jpeg" alt="LIBERTY+ Left">
+                    
+                    <!-- IMAGE 2 (REPLACE THE URL BELOW WITH YOUR NEW IMAGE LINK) -->
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0ZAIXXV0O8O7cRuWC95Mf5ksQRQ8y6-CZYh2xdesyF4en1wTha8mwmd04HYM0H7B38uZdNq-HdoUw7nk6LJc0KEwBMRPxUH2iu2AHx4rmXSgtHr5MluCFKvJcNVLWPJ9jjlaOh3MNpHO4l9DAK7Y8uxMVkwur7ZJCFYk86kwjXTtjYcmHR4aeNKovszQR/s854/123.jpeg" alt="LIBERTY+ Right">
+                    
                     <div class="delivery-badge">DELIVERED</div>
                 </div>
                 <div class="delivery-info" style="background: linear-gradient(135deg, #d35400 0%, #e67e22 100%);">
                     <div class="del-top">
-                        <div class="del-title" style="color:#fff;">CHELLU'S USTROM LIBERTY PLUS</div>
+                        <div class="del-title" style="color:#fff;">USTROM LIBERTY PLUS</div>
                         <div class="del-odo">25 <span>KM</span></div>
                     </div>
                     <div class="del-bottom">
